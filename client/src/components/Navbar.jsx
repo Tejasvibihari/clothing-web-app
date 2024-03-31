@@ -36,7 +36,7 @@ export default function Navbar() {
     };
 
     return (
-        <AppBar position="sticky" color='transparent' elevation={0}>
+        <AppBar position="fixed" color='transparent' elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
