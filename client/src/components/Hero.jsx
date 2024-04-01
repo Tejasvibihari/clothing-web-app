@@ -15,7 +15,7 @@ export default function Hero({ heroText, bgColor, btnLink, mainImgSrc, sideImgSr
                             <span className="text-bold">
                                 ______ FIND INSPRATION
                             </span>
-                            <div className='mt-4 text-6xl font-sans'>
+                            <div className='mt-4 text-6xl font-[montserrat]'>
                                 {heroText}
                             </div>
                             <div className='mt-4 justify-center items center'>
