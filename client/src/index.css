@@ -23,3 +23,18 @@
         src: url(/font/Montserrat-VariableFont_wght.ttf) format('truetype');
     }
 }
+
+@layer base {
+    @font-face {
+        font-family: 'Italina';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(/font/Italina-Regular.ttf) format('truetype');
+    }
+}
+
+.jewllery {
+    background-image: url('./img/cta-2-1-scaled.jpg');
+    background-size: cover;
+}

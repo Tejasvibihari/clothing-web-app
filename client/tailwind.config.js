@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         'amsterdam': ['Amsterdam', 'sans-serif'],
         'montserrat': ['Montserrat Thin', 'sans-serif'],
+        'italina': ['Italina', 'sans-serif'],
       },
     },
   },

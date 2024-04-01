@@ -35,6 +35,7 @@ export default function ProductSlider() {
         cssEase: "linear",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
+        pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,
