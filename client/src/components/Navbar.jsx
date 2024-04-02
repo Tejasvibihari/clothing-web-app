@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
 
-const pages = ["Home", "About", "Product", "Contact"];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
@@ -88,11 +88,7 @@ export default function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
+                            page
                         </Menu>
                     </Box>
 
@@ -132,6 +128,14 @@ export default function Navbar() {
                                 sx={{ my: 2, color: 'black', display: 'block' }}
                             >
                                 About
+                            </Button>
+                        </Link>
+                        <Link to="/contact">
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'black', display: 'block' }}
+                            >
+                                Contact
                             </Button>
                         </Link>
                     </Box>
