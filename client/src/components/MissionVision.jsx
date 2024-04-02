@@ -24,9 +24,12 @@ export default function MissionVision() {
                             <img src="./img/01.jpg" className="w-full" />
                         </div>
                     </div>
-                    <div className="flex justify-center items-center col-span-2">
-                        <div>
+                    <div className="flex justify-center items-center col-span-2 relative">
+                        <div className="">
                             <img src="./img/About_4.jpg" className="" />
+                            <div className="font-[amsterdam] text-5xl absolute inset-0 flex justify-end items-center">
+                                Our Story
+                            </div>
                         </div>
                     </div>
                 </div>

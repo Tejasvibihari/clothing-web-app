@@ -6,7 +6,7 @@ import Showcase from '../components/Showcase'
 import Brand from '../components/Brand'
 import JwelleryShow from '../components/JwelleryShow'
 import EmailSignUp from '../components/EmailSignUp'
-import Footer from '../components/Footer'
+
 export default function Home() {
     return (
         <>
@@ -17,7 +17,6 @@ export default function Home() {
             <JwelleryShowcase />
             <JwelleryShow />
             <EmailSignUp />
-            <Footer />
         </>
     )
 }

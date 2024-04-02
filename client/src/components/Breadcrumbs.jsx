@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 function handleClick(event) {
     event.preventDefault();
@@ -13,7 +13,7 @@ export default function BasicBreadcrumbs({ first, second, third, fourth, last, s
         <div className="mt-20 py-10  max-w-7xl mx-auto">
             <div role="presentation" onClick={handleClick}>
                 <Breadcrumbs aria-label="breadcrumb">
-                    <Link underline="hover" color="inherit" href="/">
+                    <Link underline="hover" color="inherit" to="/" className="cursor-pointer">
                         {first}
                     </Link>
                     {/* <Link
