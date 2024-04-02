@@ -1,5 +1,6 @@
 import AboutSection from "../components/AboutSection";
 import BasicBreadcrumbs from "../components/Breadcrumbs";
+import Features from "../components/Features";
 import MissionVision from "../components/MissionVision";
 
 
@@ -14,6 +15,7 @@ export default function About() {
             </div>
             <AboutSection />
             <MissionVision />
+            <Features />
         </>
     )
 }
