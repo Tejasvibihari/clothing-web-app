@@ -11,9 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 
-const pages = ["Home", "About", "Services", "Contact"];
+const pages = ["Home", "About", "Product", "Contact"];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
@@ -43,7 +44,7 @@ export default function Navbar() {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -117,15 +118,22 @@ export default function Navbar() {
                         flexGrow: 1, display: { xs: 'none', md: 'flex', },
                         justifyContent: "center"
                     }}>
-                        {pages.map((page) => (
+                        <Link to="/">
                             <Button
-                                key={page}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'black', display: 'block' }}
                             >
-                                {page}
+                                Home
                             </Button>
-                        ))}
+                        </Link>
+                        <Link to="/about">
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'black', display: 'block' }}
+                            >
+                                About
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
