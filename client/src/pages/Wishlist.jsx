@@ -1,7 +1,13 @@
-import React from 'react'
+import Breadcrumbs from "../components/Breadcrumbs";
 
 export default function Wishlist() {
     return (
-        <div>Wishlist</div>
+        <>
+            <div>
+                <Breadcrumbs
+                    first="Home"
+                    last="Wishlist" />
+            </div>
+        </>
     )
 }

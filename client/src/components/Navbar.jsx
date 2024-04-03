@@ -155,12 +155,16 @@ export default function Navbar() {
                     <Box sx={{ flexGrow: 0 }}>
 
                         <div className='flex justify-center items-center gap-5'>
-                            <div className='cursor-pointer'>
-                                <ShoppingBagIcon />
-                            </div>
-                            <div className='cursor-pointer'>
-                                <FavoriteBorderOutlinedIcon />
-                            </div>
+                            <Link to="/cart">
+                                <div className='cursor-pointer'>
+                                    <ShoppingBagIcon />
+                                </div>
+                            </Link>
+                            <Link to="/wishlist">
+                                <div className='cursor-pointer'>
+                                    <FavoriteBorderOutlinedIcon />
+                                </div>
+                            </Link>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
