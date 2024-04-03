@@ -8,12 +8,11 @@ import ProfileSection from "../components/ProfileSection";
 export default function About() {
     return (
         <>
-            <div className="bg-gray-300">
-                <BasicBreadcrumbs
-                    first="Home"
-                    last="About"
-                />
-            </div>
+
+            <BasicBreadcrumbs
+                first="Home"
+                last="About"
+            />
             <AboutSection />
             <MissionVision />
             <Features />

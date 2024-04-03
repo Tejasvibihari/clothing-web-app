@@ -7,12 +7,12 @@ import Map from '../components/Map'
 export default function Contact() {
     return (
         <>
-            <div className='bg-gray-300'>
-                <BasicBreadcrumbs
-                    first="Home"
-                    last="Contact"
-                />
-            </div>
+
+            <BasicBreadcrumbs
+                first="Home"
+                last="Contact"
+            />
+
 
             <ContactForm />
             <Map />

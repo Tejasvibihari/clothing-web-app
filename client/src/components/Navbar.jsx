@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 
 
@@ -88,7 +90,8 @@ export default function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            page
+                            {/* Mobile Menu  */}
+
                         </Menu>
                     </Box>
 
@@ -114,6 +117,7 @@ export default function Navbar() {
                         flexGrow: 1, display: { xs: 'none', md: 'flex', },
                         justifyContent: "center"
                     }}>
+                        {/* Desktop Menu  */}
                         <Link to="/">
                             <Button
                                 onClick={handleCloseNavMenu}
@@ -138,14 +142,32 @@ export default function Navbar() {
                                 Contact
                             </Button>
                         </Link>
+                        <Link to="/product">
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'black', display: 'block' }}
+                            >
+                                Products
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
+
+                        <div className='flex justify-center items-center gap-5'>
+                            <div className='cursor-pointer'>
+                                <ShoppingBagIcon />
+                            </div>
+                            <div className='cursor-pointer'>
+                                <FavoriteBorderOutlinedIcon />
+                            </div>
+                            <Tooltip title="Open settings">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                </IconButton>
+                            </Tooltip>
+                        </div>
+
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
@@ -171,6 +193,6 @@ export default function Navbar() {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }

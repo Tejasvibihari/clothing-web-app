@@ -10,13 +10,14 @@ function handleClick(event) {
 
 export default function BasicBreadcrumbs({ first, second, third, fourth, last, secondL, thirdL, fourthL }) {
     return (
-        <div className="mt-20 py-10  max-w-7xl mx-auto">
-            <div role="presentation" onClick={handleClick}>
-                <Breadcrumbs aria-label="breadcrumb">
-                    <Link underline="hover" color="inherit" to="/" className="cursor-pointer">
-                        {first}
-                    </Link>
-                    {/* <Link
+        <div className="bg-gray-300">
+            <div className="mt-20 py-10  max-w-7xl mx-auto">
+                <div role="presentation" onClick={handleClick}>
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="inherit" to="/" className="cursor-pointer">
+                            {first}
+                        </Link>
+                        {/* <Link
                         underline="hover"
                         color="inherit"
                         href={secondL}
@@ -37,8 +38,9 @@ export default function BasicBreadcrumbs({ first, second, third, fourth, last, s
                     >
                         {fourth}
                     </Link> */}
-                    <Typography color="text.primary">{last}</Typography>
-                </Breadcrumbs>
+                        <Typography color="text.primary">{last}</Typography>
+                    </Breadcrumbs>
+                </div>
             </div>
         </div>
     );

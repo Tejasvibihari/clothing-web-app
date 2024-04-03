@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import ProductCardM from "./ProductCardM";
+import ProductCard from "./ProductCardM";
 import propTypes from "prop-types";
 
 function SampleNextArrow(props) {
@@ -71,30 +71,30 @@ export default function ProductSlider() {
             </div>
             <Slider {...settings}>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div><div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
                 <div>
-                    <ProductCardM />
+                    <ProductCard />
                 </div>
             </Slider>
         </div>
