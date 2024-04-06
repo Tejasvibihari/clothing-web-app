@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupStart, signupSuccess, signupError } from '../app/user/userSlice';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import Slide from '@mui/material/Slide';
-
+import Alert from '@mui/material/Alert';
+import { Collapse } from '@mui/material';
 
 
 export default function SignUpForm() {
@@ -19,12 +20,14 @@ export default function SignUpForm() {
     const [checkUserName, setCheckUserName] = useState('');
     const [checkEmail, setCheckEmail] = useState('');
     const [snackopen, setsnackOpen] = useState(false);
+    //For Alert Dilogue Box
+    const [alertSuccess, setAlertSuccess] = useState(false);
+    const [alertError, setAlertError] = useState(false);
 
     // Snack bar Handle Open And Close 
     const handleSnackClick = () => {
         setsnackOpen(true);
     };
-
     const handlesnackClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -33,6 +36,7 @@ export default function SignUpForm() {
         setCheckUserName(null);
         setCheckEmail(null);
     };
+
     //Handling And Sending Form data to backend
     async function handleSubmit(event) {
         event.preventDefault();
@@ -50,9 +54,11 @@ export default function SignUpForm() {
                 username
             })
             dispatch(signupSuccess(userData.data.message))
+            setAlertSuccess(true);
         } catch (error) {
             console.log(error)
-            dispatch(signupError())
+            dispatch(signupError());
+            setAlertError(true);
         }
     }
 
@@ -79,6 +85,22 @@ export default function SignUpForm() {
             console.log(error)
         }
     }
+
+    //For Closing Alert Dilogue Box 
+    useEffect(() => {
+        if (alertSuccess || alertError) {
+            const timer = setTimeout(() => {
+                setAlertSuccess(false);
+                setAlertError(false);
+            }, 2000); // 5000 milliseconds = 5 seconds
+
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [alertSuccess, alertError]);
+
+    //Snackbar
     const action = (
         <React.Fragment>
             <IconButton
@@ -100,10 +122,15 @@ export default function SignUpForm() {
                 message={checkUserName || checkEmail ? checkUserName || checkEmail : null}
                 action={action}
                 TransitionComponent={Slide}
-                severity="warning"
-                variant="filled"
             />
+            <div className='max-w-lg'>
+                <div className='fixed bottom-4 left-4'>
+                    {alertSuccess && <Alert severity="success">User Registered Successfully</Alert>}
+                    {alertError && <Alert severity="error">User Registration Failed</Alert>}
+                </div>
+            </div >
             <div className='max-w-lg mx-auto mt-20 p-4'>
+
                 <div className='text-3xl font-[montserrat] my-10'>
                     Register
                 </div>
