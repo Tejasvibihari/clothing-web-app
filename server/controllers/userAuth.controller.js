@@ -12,8 +12,6 @@ export const userSignup = async (req, res) => {
     //check if user  already exists in the database
     const { username, password, name, email } = req.body;
     try {
-        const existingUser = await User.findOne({ email: email });
-        existingUser ? res.status(400).json({ message: "User already exists" }) : null;
         const hashPassword = await bcrypt.hash(password, saltRound);
         const createUser = new User({
             username,
@@ -22,11 +20,38 @@ export const userSignup = async (req, res) => {
             name
         })
         await createUser.save();
-        console.log(createUser);
+        res.send({ message: "User created successfully" })
     } catch (error) {
-        console.log(error)
+        res.status(400).send({ message: error.message });
     }
 }
+
+export const checkusername = async (req, res) => {
+    const { username } = req.body;
+    try {
+        const existingUserName = await User.findOne({ username: username });
+        if (existingUserName) {
+            res.send({ message: "Username already taken" })
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+export const checkemail = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const existingUser = await User.findOne({ email: email });
+        if (existingUser) {
+            res.send({ message: "Email already taken" })
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 
 export const usersignin = async (req, res) => {
     const { email, password } = req.body;
