@@ -59,6 +59,7 @@ export const usersignin = async (req, res) => {
         const existUser = await User.findOne({ email: email });
         !existUser ? res.status(400).json({ message: "User does not exist" }) : null;
         const checkPassword = await bcrypt.compare(password, existUser.password);
+        !checkPassword ? res.status(400).json({ message: "Password does not match" }) : null;
         const jwtPayload = {
             userId: existUser._id,
             username: existUser.username,

@@ -1,33 +1,50 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import useState from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { signinStart, signinSuccess, signinFailure } from '../app/user/userSlice';
+import Alert from '@mui/material/Alert';
 
 export default function SignInForm() {
+    const error = useSelector((state) => state.user.error);
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     // Form Handling
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            dispatch(signinStart())
             const formData = new FormData(event.target);
             const email = formData.get('email');
             const password = formData.get('password');
-
             const userData = await axios.post('/api/user/signin', {
                 email, password
             });
-            console.log(userData.data.message);
+            dispatch(signinSuccess(userData.data))
             navigate("/")
-
-
         } catch (error) {
-            console.log(error);
+            dispatch(signinFailure(error.response.data.message));
         }
     }
+    // Alert Handling
+    useEffect(() => {
+        if (error) {
+            const timer = setTimeout(() => {
+                dispatch(signinFailure(null))
+            }, 3000);
+
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [error]);
     return (
-        <>
+        <><div className='max-w-lg'>
+            <div className='fixed bottom-4 left-4'>
+                {error && <Alert severity="warning">{error}</Alert>}
+            </div>
+        </div >
             <div className='max-w-lg mx-auto mt-20 p-4'>
                 <div className='text-3xl font-[montserrat] my-10'>
                     Login
