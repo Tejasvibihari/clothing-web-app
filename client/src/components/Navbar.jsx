@@ -200,11 +200,15 @@ export default function Navbar() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem onClick={handleCloseUserMenu} className='flex flex-col'>
+                                <div className='my-1'>
+                                    <Typography textAlign="center">Profile</Typography>
+                                </div>
+                                <div className='my-1'>
+                                    <Typography textAlign="center">Logout</Typography>
+                                </div>
+                            </MenuItem>
+
                         </Menu>
                     </Box>
                 </Toolbar>
