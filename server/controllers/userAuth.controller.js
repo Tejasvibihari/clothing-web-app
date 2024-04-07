@@ -66,9 +66,9 @@ export const usersignin = async (req, res) => {
         const token = jwt.sign(jwtPayload, secretKey, { expiresIn: "1h" });
         const { password: pass, ...userData } = existUser._doc;
         res
-            .status(200, { message: "Login successful" })
+            .status(200)
             .cookie("token", token, { httpOnly: true })
-            .json(userData);
+            .json({ userData, message: "Login successful" });
     } catch (error) {
         console.log(error)
     }

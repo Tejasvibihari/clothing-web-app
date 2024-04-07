@@ -9,7 +9,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import Slide from '@mui/material/Slide';
 import Alert from '@mui/material/Alert';
-import { Collapse } from '@mui/material';
 
 
 export default function SignUpForm() {
@@ -19,6 +18,7 @@ export default function SignUpForm() {
     //For Username and Email 
     const [checkUserName, setCheckUserName] = useState('');
     const [checkEmail, setCheckEmail] = useState('');
+    //For Snackbar open Close
     const [snackopen, setsnackOpen] = useState(false);
     //For Alert Dilogue Box
     const [alertSuccess, setAlertSuccess] = useState(false);
@@ -52,7 +52,7 @@ export default function SignUpForm() {
                 email,
                 password,
                 username
-            })
+            });
             dispatch(signupSuccess(userData.data.message))
             setAlertSuccess(true);
         } catch (error) {
@@ -80,7 +80,6 @@ export default function SignUpForm() {
             const checkUserName = await axios.post('/api/user/checkemail', { email })
             setCheckEmail(checkUserName.data.message);
             handleSnackClick()
-
         } catch (error) {
             console.log(error)
         }
