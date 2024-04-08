@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { Link } from 'react-router-dom';
@@ -14,30 +14,10 @@ export default function BasicBreadcrumbs({ first, second, third, fourth, last, s
             <div className="mt-20 py-10  max-w-7xl mx-auto">
                 <div role="presentation" onClick={handleClick}>
                     <Breadcrumbs aria-label="breadcrumb">
-                        <Link underline="hover" color="inherit" to="/" className="cursor-pointer">
-                            {first}
-                        </Link>
-                        {/* <Link
-                        underline="hover"
-                        color="inherit"
-                        href={secondL}
-                    >
-                        {second}
-                    </Link>
-                    <Link
-                        underline="hover"
-                        color="inherit"
-                        href={thirdL}
-                    >
-                        {third}
-                    </Link>
-                    <Link
-                        underline="hover"
-                        color="inherit"
-                        href={fourthL}
-                    >
-                        {fourth}
-                    </Link> */}
+                        {first && <Link underline="hover" color="inherit" to="/" className="cursor-pointer">{first}</Link>}
+                        {second && <Link underline="hover" color="inherit" href={secondL}>{second}</Link>}
+                        {third && <Link underline="hover" color="inherit" href={thirdL}>{third}</Link>}
+                        {fourth && <Link underline="hover" color="inherit" href={fourthL}>{fourth}</Link>}
                         <Typography color="text.primary">{last}</Typography>
                     </Breadcrumbs>
                 </div>

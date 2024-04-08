@@ -7,6 +7,8 @@ export default function AddProduct() {
         <>
             <BasicBreadcrumbs
                 first="Home"
+                second="Admin"
+                secondL="/admin"
                 last="Add Product" />
             <AddProductForm />
         </>
