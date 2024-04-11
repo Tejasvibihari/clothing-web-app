@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { addCloth, addJewellery } from '../controllers/addProduct.controller.js';
+import { addCloth, addJewellery, getCloth, getJewellery } from '../controllers/product.controller.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
@@ -19,7 +19,8 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix)
+        const extension = path.extname(file.originalname);
+        cb(null, file.fieldname + '-' + uniqueSuffix + extension)
     }
 })
 
@@ -28,5 +29,7 @@ const upload = multer({ storage: storage })
 const router = express.Router();
 router.post('/addcloth', upload.array("images", 4), addCloth);
 router.post('/addjewellery', upload.array("images", 4), addJewellery);
+router.get('/getcloth', getCloth);
+router.get('/getjewellery', getJewellery);
 
 export default router;

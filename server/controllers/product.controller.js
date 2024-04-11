@@ -3,7 +3,7 @@ import Jewellery from "../model/jewellery.model.js";
 
 
 export const addCloth = async (req, res) => {
-    const { productName, description } = req.body;
+    const { productName, description, subtitle } = req.body;
     const { category, price } = req.body;
     console.log(productName)
     console.log(description)
@@ -18,6 +18,7 @@ export const addCloth = async (req, res) => {
             description,
             category,
             price,
+            subtitle,
             images
         });
         await newCloth.save();
@@ -28,7 +29,7 @@ export const addCloth = async (req, res) => {
 }
 
 export const addJewellery = async (req, res) => {
-    const { productName, description, category, price } = req.body;
+    const { productName, description, category, price, subtitle } = req.body;
     const images = req.files.map(file => file.filename);
     try {
         const newJewellery = new Jewellery({
@@ -36,11 +37,31 @@ export const addJewellery = async (req, res) => {
             description,
             category,
             price,
+            subtitle,
             images
         });
         await newJewellery.save();
         res.status(201).json({ newJewellery, message: "Jewellery data added successfully" });
     } catch (error) {
         res.status(409).json({ message: error.message });
+    }
+}
+
+export const getCloth = async (req, res) => {
+    try {
+        const clothData = await Cloth.find();
+        if (!clothData) return res.status(404).json({ message: "No data found" });
+        res.status(200).json(clothData);
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const getJewellery = async (req, res) => {
+    try {
+        const jewelleryData = await Jewellery.find();
+        if (!jewelleryData) return res.status(404).json({ message: "No data found" });
+        res.status(200).json(jewelleryData);
+    } catch (error) {
+        console.log(error)
     }
 }

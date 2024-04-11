@@ -12,7 +12,7 @@ export default function ProductCategory() {
                             <div className="font-[montserrat] text-lg text-white">WHAT NEXT</div>
                             <div className="font-[montserrat] text-5xl my-4 text-white font-semibold max-w-64 leading-snug text-center">Dress That Impress</div>
                             <div className="my-4">
-                                <Link to="/">
+                                <Link to="/cloth">
                                     <button className='bg-[#ff6f61] p-3 text-white hover:text-[#ff6f61] hover:bg-transparent border-[1px] border-[#ff6f61]'>
                                         Discover Now
                                         <span>

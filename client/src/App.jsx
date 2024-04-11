@@ -8,6 +8,8 @@ import Product from "./pages/Product";
 import Wishlist from "./pages/Wishlist";
 import SignIn from "./pages/SignIn";
 import AddProduct from "./pages/AddProduct";
+import Admin from "./pages/Admin";
+import Cloth from "./pages/Cloth";
 
 export default function App() {
 
@@ -21,7 +23,9 @@ export default function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/addproduct" element={<AddProduct/>} />
+        <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/cloth" element={<Cloth />} />
       </Routes>
       <Footer />
     </BrowserRouter>

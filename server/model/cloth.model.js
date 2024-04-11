@@ -9,6 +9,9 @@ const clothSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    subtitle: {
+        type: String
+    },
     category: {
         type: String,
         required: true

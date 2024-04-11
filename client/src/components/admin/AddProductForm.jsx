@@ -9,6 +9,7 @@ export default function AddProductForm() {
     const [price, setPrice] = useState("000");
     const [category, setCategory] = useState("Category");
     const [image, setImage] = useState(['./img/p1.jpg', './img/p2.jpg', './img/p3.jpg', './img/p4.jpg']);
+    const [subtitle, setSubtitle] = useState();
 
     //Category Array
     const clothCategory = ['Jeans', 'Top', 'Dress', 'Party Wear', 'Unergarments'];
@@ -20,17 +21,18 @@ export default function AddProductForm() {
             formData.append('productName', name);
             formData.append('productDesc', description);
             formData.append('productPrice', price);
+            formData.append('productSubtitle', subtitle);
             formData.append('productCategory', category);
             formData.append('image1', image[0]);
             formData.append('image2', image[1]);
             formData.append('image3', image[2]);
             formData.append('image4', image[3]);
-            console.log(formData.get('price'))
-            const productRes = await axios.post(`/api/addproduct/add${type}`, formData);
+            console.log(formData.get('images'))
+            const productRes = await axios.post(`/api/product/add${type}`, formData);
             console.log(productRes);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -43,6 +45,8 @@ export default function AddProductForm() {
             setDescription(event.target.value);
         } else if (event.target.name === 'category') {
             setCategory(event.target.value);
+        } else if (event.target.name === 'subtitle') {
+            setSubtitle(event.target.value);
         } else if (event.target.name === 'images') {
             const files = event.target.files;
             const imageArray = Array.from(files).map((file) => URL.createObjectURL(file));
@@ -69,13 +73,15 @@ export default function AddProductForm() {
                 <div>
                     <div className='max-w-lg mx-auto mt-20 p-4'>
                         <div className='text-3xl font-[montserrat] my-10'>
-                           Add Product
+                            Add Product
                         </div>
                         <form onSubmit={handleSubmit} encType="multipart/form-data">
                             <label className='text-lg font-[montserrat]'>Product Name<span className="text-red-700">*</span></label>
                             <input type='text' name='productname' onChange={handleFormChange} placeholder='Product Name' className='w-full p-4 my-2 border border-gray-300 text-lg' required />
                             <label className='text-lg font-[montserrat]'>Price<span className="text-red-700">*</span></label>
                             <input type='number' name='price' onChange={handleFormChange} placeholder='Price' className='w-full p-4 my-2 border border-gray-300 text-lg' />
+                            <label className='text-lg font-[montserrat]'>Subtitle<span className="text-red-700"></span></label>
+                            <input type='text' name='subtitle' onChange={handleFormChange} placeholder='Subtitle' className='w-full p-4 my-2 border border-gray-300 text-lg' />
                             <label className='text-lg font-[montserrat]'>Description<span className="text-red-700">*</span></label>
                             <textarea type='text' name='description' onChange={handleFormChange} placeholder='Description' className='w-full p-4 my-2 border border-gray-300 text-lg' required />
                             <label className='text-lg font-[montserrat]'>Category<span className="text-red-700">*</span></label>
