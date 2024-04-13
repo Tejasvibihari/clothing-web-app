@@ -65,3 +65,17 @@ export const getJewellery = async (req, res) => {
         console.log(error)
     }
 }
+
+export const getProductById = async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const cloth = await Cloth.findById(productId);
+        const jewellery = await Jewellery.findById(productId);
+        if (!cloth && !jewellery) { // Use && instead of ||
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json(cloth || jewellery);
+    } catch (error) {
+        res.json(error.message)
+    }
+};

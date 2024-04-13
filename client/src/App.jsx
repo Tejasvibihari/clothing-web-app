@@ -10,6 +10,9 @@ import SignIn from "./pages/SignIn";
 import AddProduct from "./pages/AddProduct";
 import Admin from "./pages/Admin";
 import Cloth from "./pages/Cloth";
+import Jewellery from "./pages/Jewellery";
+import Cart from "./pages/Cart";
+import SingleProduct from "./pages/SingleProduct";
 
 export default function App() {
 
@@ -26,6 +29,10 @@ export default function App() {
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/cloth" element={<Cloth />} />
+        <Route path="/jewellery" element={<Jewellery />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/product/cloth/:productId" element={<SingleProduct />} />
+        <Route path="/product/jewellery/:productId" element={<SingleProduct />} />
       </Routes>
       <Footer />
     </BrowserRouter>

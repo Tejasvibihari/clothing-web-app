@@ -1,6 +1,11 @@
 import Slider from "react-slick";
 import ProductCard from "./ProductCardM";
 import propTypes from "prop-types";
+import axios from "axios";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCloth, setJewellery, setProductError } from "../app/product/productSlice";
+
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -24,6 +29,25 @@ function SamplePrevArrow(props) {
     );
 }
 export default function ProductSlider() {
+    const dispatch = useDispatch();
+    const cloths = useSelector((state) => state.product.cloths);
+    const jewellries = useSelector((state) => state.product.jewelleries);
+    useEffect(() => {
+        async function getPoduct() {
+            try {
+                const cloths = await axios.get("/api/product/getcloth");
+                const jewelleries = await axios.get("/api/product/getjewellery");
+                dispatch(setCloth(cloths.data))
+                dispatch(setJewellery(jewelleries.data))
+            } catch (error) {
+                console.log(error)
+                setProductError("No Product To Show" + error)
+
+            }
+        }
+        getPoduct();
+    }, []);
+
     var settings = {
         dots: false,
         infinite: true,
@@ -70,32 +94,18 @@ export default function ProductSlider() {
                 {whatsNew}
             </div>
             <Slider {...settings}>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div><div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
-                <div>
-                    <ProductCard />
-                </div>
+                {cloths.map((cloth, i) => {
+                    return (
+                        <div key={i}>
+                            <ProductCard
+                                key={cloth._id}
+                                title={cloth.productName}
+                                price={cloth.price}
+                                image={`http://localhost:3000/uploads/${cloth.images[0]}`}
+                            />
+                        </div>
+                    )
+                })}
             </Slider>
         </div>
     );

@@ -33,7 +33,7 @@ export default function ProductCategory() {
                                 Jewelry That Defines You
                             </div>
                             <div className="my-4">
-                                <Link to="/">
+                                <Link to="/jewellery">
                                     <button className='bg-[#ff6f61] p-3 text-white hover:text-[#ff6f61] hover:bg-transparent border-[1px] border-[#ff6f61]'>
                                         Discover Now
                                         <span><ArrowForwardIosIcon sx={{ fontSize: 15 }} />

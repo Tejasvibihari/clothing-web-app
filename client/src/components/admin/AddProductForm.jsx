@@ -13,7 +13,7 @@ export default function AddProductForm() {
 
     //Category Array
     const clothCategory = ['Jeans', 'Top', 'Dress', 'Party Wear', 'Unergarments'];
-    const jewelleryCategory = ['Earning', 'Ring', 'Necklace', 'Bracelet'];
+    const jewelleryCategory = ['Earring', 'Ring', 'Necklace', 'Bracelet'];
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {

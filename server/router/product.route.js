@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { addCloth, addJewellery, getCloth, getJewellery } from '../controllers/product.controller.js';
+import { addCloth, addJewellery, getCloth, getJewellery, getProductById } from '../controllers/product.controller.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
@@ -31,5 +31,6 @@ router.post('/addcloth', upload.array("images", 4), addCloth);
 router.post('/addjewellery', upload.array("images", 4), addJewellery);
 router.get('/getcloth', getCloth);
 router.get('/getjewellery', getJewellery);
+router.get('/:productId', getProductById);
 
 export default router;

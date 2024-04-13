@@ -116,7 +116,7 @@ export default function Navbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        <img src="./img/BihariLogo.png" alt="Bihari Logo" className='w-28' />
+                        <img src="/img/BihariLogo.png" alt="Bihari Logo" className='w-28' />
                     </Typography>
                     <Box sx={{
                         flexGrow: 1, display: { xs: 'none', md: 'flex', },

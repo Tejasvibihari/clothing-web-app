@@ -5,28 +5,27 @@ import axios from "axios";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
-import { setCloth } from "../app/product/productSlice";
+import { setJewellery } from "../app/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-
 
 export default function Cloth() {
     const dispatch = useDispatch();
-    const cloths = useSelector((state) => state.product.cloths);
+    const jewelleries = useSelector((state) => state.product.jewelleries);
     const [priceRange, setPriceRange] = useState([0, 10000]);
     const [selectedCategories, setSelectedCategories] = useState([]);
 
     useEffect(() => {
-        async function fetchCloth() {
-            const response = await axios.get("/api/product/getcloth");
-            dispatch(setCloth(response.data));
+        async function fetchJewellery() {
+            const response = await axios.get("/api/product/getjewellery");
+            dispatch(setJewellery(response.data))
         }
-        fetchCloth();
+        fetchJewellery();
     }, []);
 
     // Filtering function
-    const filterCloths = (cloth) => {
-        const priceInRange = cloth.price >= priceRange[0] && cloth.price <= priceRange[1];
-        const categoryMatched = selectedCategories.length === 0 || selectedCategories.includes(cloth.category);
+    const filterJewelleries = (jewellery) => {
+        const priceInRange = jewellery.price >= priceRange[0] && jewellery.price <= priceRange[1];
+        const categoryMatched = selectedCategories.length === 0 || selectedCategories.includes(jewellery.category);
         return priceInRange && categoryMatched;
     };
 
@@ -46,7 +45,7 @@ export default function Cloth() {
     };
 
     // Filtered cloth products based on price and category
-    const filteredCloths = cloths.filter(filterCloths);
+    const filteredJewelleries = jewelleries.filter(filterJewelleries);
 
     return (
         <>
@@ -55,7 +54,7 @@ export default function Cloth() {
                     first="Home"
                     second="Products"
                     secondL="/product"
-                    last="Cloth"
+                    last="Jewellery"
                 />
                 <div className="grid grid-cols-6 max-w-7xl mx-auto mt-5">
                     <div className="col-span-2 p-4">
@@ -68,7 +67,7 @@ export default function Cloth() {
                             </div>
                             <div className="inline-flex flex-col mx-5 text-gray-500">
                                 {/* Checkbox for each category */}
-                                {["All", "Jeans", "Top", "Party Wear", "Undergarments"].map((category) => (
+                                {["All", "Ring", "Earring", "Necklace", "Bracelet"].map((category) => (
                                     <FormControlLabel
                                         key={category}
                                         control={<Checkbox />}
@@ -100,14 +99,14 @@ export default function Cloth() {
                     <div className="col-span-4">
                         <div className="grid grid-cols-4 gap-7">
                             {/* Display filtered cloth products */}
-                            {filteredCloths.map((cloth) => (
+                            {filteredJewelleries.map((jewellery) => (
                                 <ProductCard
-                                    key={cloth._id}
-                                    productName={cloth.productName}
-                                    category={cloth.category}
-                                    price={cloth.price}
-                                    link={`/product/cloth/${cloth._id}`}
-                                    images={`http://localhost:3000/uploads/${cloth.images[0]}`}
+                                    key={jewellery._id}
+                                    productName={jewellery.productName}
+                                    category={jewellery.category}
+                                    price={jewellery.price}
+                                    link={`/product/jewellery/${jewellery._id}`}
+                                    images={`http://localhost:3000/uploads/${jewellery.images[0]}`}
                                 />
                             ))}
                         </div>

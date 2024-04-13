@@ -42,7 +42,7 @@ export default function HeroSlider() {
                 <div>
                     <Hero
                         heroText="This Week Make Yourself"
-                        btnLink="#"
+                        btnLink="/product"
                         mainImgSrc="./img/h2-slider01.jpg"
                         sideImgSrc="./img/h2-slider02.jpg"
                         bgColor="bg-[#E8D8C5]"
